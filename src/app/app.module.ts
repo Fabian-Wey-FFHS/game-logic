@@ -9,6 +9,7 @@ import { CardgridComponent } from './board/cardgrid/cardgrid.component';
 import { Player1handComponent } from './board/player1hand/player1hand.component';
 import { Player2handComponent } from './board/player2hand/player2hand.component';
 import {ChatpanelComponent} from "./chatpanel/chatpanel.component";
+import { GameService } from "src/app/shared/game.service";
 
 @NgModule({
   declarations: [
@@ -21,14 +22,15 @@ import {ChatpanelComponent} from "./chatpanel/chatpanel.component";
     Player1handComponent,
     Player2handComponent,
     ChatpanelComponent,
-
   ],
   imports: [
     BrowserModule,
     FormsModule,
+
   ],
-  providers: [],
+  providers: [GameService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
 
