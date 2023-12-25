@@ -1,0 +1,25 @@
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+
+.container {
+  height: 100%;
+  width: 100%;
+}
+
+#info_panel {
+  background-color: #ffcc00; /* Set background color for the info_panel column */
+  height: 100vh;
+}
+
+#board_panel {
+  background-color: #99ff99; /* Set background color for the board_panel column */
+  height: 100vh;
+}
+
+#chat_panel {
+  background-color: #66b2ff; /* Set background color for the chat_panel column */
+  height: 100vh;
+}
