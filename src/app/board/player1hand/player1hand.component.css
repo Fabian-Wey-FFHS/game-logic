@@ -1,0 +1,24 @@
+/* player1hand.component.css */
+
+/* The Rectangles are gray, Portrait, have a border and rounded edges  */
+/* Height and width follow the golden section and are made to fit the width of the board column */
+
+.gray-rectangle {
+  background-color: #D3D3D3;
+  border: 1px solid black;
+  border-radius: 5px;
+  width: 100%; /* Set width to 100% of the column */
+  padding-top: 61.8%; /* Golden section aspect ratio (adjust as needed) */
+  position: relative;
+}
+
+/* Optional: Add content or additional styling inside the rectangle */
+.gray-rectangle-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 10px; /* Adjust padding as needed */
+  box-sizing: border-box;
+}
