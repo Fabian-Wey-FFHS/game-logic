@@ -1,10 +1,14 @@
+<!-- chatpanel.component.html -->
 <p>chatpanel works!</p>
-<!-- Element to display chat messages -->
-<div id="messages"></div>
-<!-- input field chat messages -->
-<input type="text" id="chat-input" placeholder="Type your message here..."/>
-<!-- button to send chat messages -->
-<button id="send-message">Send</button>
+<div>
+  <div id="messages">
+    <!-- Display messages from the 'messages' array -->
+    <div *ngFor="let message of messages">{{ message }}</div>
+  </div>
+
+  <input type="text" id="chat-input" placeholder="Type your message here..." [(ngModel)]="newMessage" />
+  <button id="send-message" (click)="sendMessage()">Send</button>
+</div>
 
 
 

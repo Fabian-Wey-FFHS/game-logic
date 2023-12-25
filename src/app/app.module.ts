@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from 'src/app/header/header.component';
 import { InfopanelComponent } from './infopanel/infopanel.component';
@@ -20,12 +20,15 @@ import {ChatpanelComponent} from "./chatpanel/chatpanel.component";
     CardgridComponent,
     Player1handComponent,
     Player2handComponent,
-    ChatpanelComponent
+    ChatpanelComponent,
+
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
