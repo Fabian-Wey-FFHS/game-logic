@@ -1,0 +1,23 @@
+/* cardgrid.component.css */
+
+.gray-rectangle {
+  background-color: #D3D3D3;
+  border: 1px solid black;
+  border-radius: 5px;
+  width: 100%;
+  padding-top: 140%; /* Adjust as needed */
+  position: relative;
+  margin-bottom: 10%;
+  box-sizing: border-box;
+}
+
+/* Optional: Add content or additional styling inside the rectangle */
+.gray-rectangle-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 10px;
+  box-sizing: border-box;
+}
