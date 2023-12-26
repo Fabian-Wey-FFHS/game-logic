@@ -1,1 +1,16 @@
+#gamestatus {
+  /* Light gray background box with round corners */
+  background-color: rgba(183, 223, 255, 0.17);
+  border-radius: 5px;
 
+  /* Set the height to 66% of the viewport height */
+  height: 66vh;
+
+  /* Set margin to create space on the top and left/right */
+  margin: 5px;
+
+  /* Make the box scrollable */
+  overflow-y: scroll;
+  box-sizing: border-box;
+  padding: 10px; /* Adjust padding as needed */
+}

@@ -1,10 +1,14 @@
 <!-- infopanel.component.html -->
 <p>infopanel works!</p>
 <div>
+  <div id="playerstatus">
+    <p>player 1: 20 Hazelnuts</p>
+    <p>player 2: 20 Hazelnuts</p>
+  </div>
   <div id="gamestatus">
-    <!-- Display events from the events array from GameService -->
     <p *ngFor="let event of events">{{event}}</p>
-    <!-- context sensitive button that either reads finish turn or end game -->
+  </div>
+  <div id="gamecontrols">
     <button (click)="finishTurn()">Finish Turn</button>
   </div>
 </div>

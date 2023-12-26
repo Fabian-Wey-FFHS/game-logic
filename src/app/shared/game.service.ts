@@ -10,10 +10,11 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class GameService {
-  player1Cards: CardModel[] = [];
-  player2Cards: CardModel[] = [];
   stack: CardModel[] = [];
   events: string[] = [];
+  player1Hand: CardModel[] = [];
+  player2Hand: CardModel[] = [];
+  cardGrid: CardModel[][] = [];
   initGame() {
     for (let i = 0; i < 30; i++) {
       let attack = Math.floor(Math.random() * 6);
@@ -33,9 +34,19 @@ export class GameService {
       let stats = "atk: " + card.attack + " def: " + card.defense + " hp: " + card.health + " res: " + card.ressources;
       this.events.push(stats);
     }
+    this.player1Hand = this.stack.splice(0, 5);
+    this.player2Hand = this.stack.splice(0, 5);
+    this.events.push("cards dealt");
   }
   getEvents(): string[] {
     return this.events;
+  }
+  getPlayer1Hand(): CardModel[] {
+    return this.player1Hand;
+  }
+
+  getPlayer2Hand(): CardModel[] {
+    return this.player2Hand;
   }
 
 }

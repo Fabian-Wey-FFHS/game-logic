@@ -5,6 +5,6 @@ import { Component } from '@angular/core';
   templateUrl: './player2hand.component.html',
   styleUrls: ['./player2hand.component.css']
 })
-export class Player2handComponent {
+export class Player2HandComponent {
 
 }

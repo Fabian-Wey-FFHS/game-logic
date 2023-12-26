@@ -6,8 +6,8 @@ import { HeaderComponent } from 'src/app/header/header.component';
 import { InfopanelComponent } from './infopanel/infopanel.component';
 import { BoardComponent } from './board/board.component';
 import { CardgridComponent } from './board/cardgrid/cardgrid.component';
-import { Player1handComponent } from './board/player1hand/player1hand.component';
-import { Player2handComponent } from './board/player2hand/player2hand.component';
+import { Player1HandComponent } from './board/player1hand/player1hand.component';
+import { Player2HandComponent } from './board/player2hand/player2hand.component';
 import {ChatpanelComponent} from "./chatpanel/chatpanel.component";
 import { GameService } from "src/app/shared/game.service";
 
@@ -19,8 +19,8 @@ import { GameService } from "src/app/shared/game.service";
     InfopanelComponent,
     BoardComponent,
     CardgridComponent,
-    Player1handComponent,
-    Player2handComponent,
+    Player1HandComponent,
+    Player2HandComponent,
     ChatpanelComponent,
   ],
   imports: [
