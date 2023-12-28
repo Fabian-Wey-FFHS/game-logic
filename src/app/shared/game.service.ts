@@ -1,10 +1,9 @@
 // game.service.ts
+// This Service runs the logic of the game.
+// The service keeps track of the cards in the hands of the Players (5 for each Player),
+// the cardgrid where players can play their cards and the state of the game
 import {CardModel} from "../model/card.model";
 import { Injectable } from '@angular/core';
-
-//when site is loaded, create a stack of 30 cards
-//every card gets a ranomized value between 0 and 5 for attack, defense, health and ressources
-//the cost is the sum of the stats/4 rounded down
 
 @Injectable({
   providedIn: 'root'
@@ -14,15 +13,20 @@ export class GameService {
   events: string[] = [];
   player1Hand: CardModel[] = [];
   player2Hand: CardModel[] = [];
+
+  // 5 column 4 row grid
   cardGrid: CardModel[][] = [];
+
+  // initializes a card stack with random values for attack, defense, health and resources. The cost of the card is
+  // calucalated by
   initGame() {
     for (let i = 0; i < 30; i++) {
       let attack = Math.floor(Math.random() * 6);
       let defense = Math.floor(Math.random() * 6);
-      let health = Math.floor(Math.random() * 6);
-      let ressources = Math.floor(Math.random() * 6);
-      let cost = Math.floor((attack + defense + health + ressources) / 4);
-      let card = new CardModel(attack, defense, health, cost, ressources);
+      let health = 1+Math.floor(Math.random() * 5);
+      let resources = Math.floor(Math.random() * 6);
+      let cost = Math.floor((attack + defense + health + resources) / 4);
+      let card = new CardModel(attack, defense, health, cost, resources);
       this.stack.push(card);
     }
     // create a string with the stats of each card
@@ -31,9 +35,10 @@ export class GameService {
     // Send this string to the events array in infopanel.component.ts
     for (let i = 0; i < 30; i++) {
       let card = this.stack[i];
-      let stats = "atk: " + card.attack + " def: " + card.defense + " hp: " + card.health + " res: " + card.ressources;
+      let stats = "atk: " + card.attack + " def: " + card.defense + " hp: " + card.health + " res: " + card.resources;
       this.events.push(stats);
     }
+    // deals 5 cards from the stack to the players
     this.player1Hand = this.stack.splice(0, 5);
     this.player2Hand = this.stack.splice(0, 5);
     this.events.push("cards dealt");
