@@ -5,19 +5,14 @@
 
 <p>player1hand works!</p>
 <div class="row mx-auto">
-    <div class="col-md-2">
-      <div id="P1.1" class="gray-rectangle"></div>
+  <div *ngFor="let card of player1Hand; let i = index" class="col-md-2">
+    <div
+      id="P1.{{ i + 1 }}"
+      class="gray-rectangle"
+      (click)="selectCard(card)"
+      [class.selected]="card.selected"
+    >
+      {{ card.stats }} <!-- Display card stats inside the rectangle -->
     </div>
-    <div class="col-md-2">
-      <div id="P1.2" class="gray-rectangle"></div>
-    </div>
-    <div class="col-md-2">
-      <div id="P1.3" class="gray-rectangle"></div>
-    </div>
-    <div class="col-md-2">
-      <div id="P1.4" class="gray-rectangle"></div>
-    </div>
-    <div class="col-md-2">
-      <div id="P1.5" class="gray-rectangle"></div>
-    </div>
+  </div>
 </div>

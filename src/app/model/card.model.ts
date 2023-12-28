@@ -8,6 +8,8 @@ export class CardModel {
     cost: number;
     resources: number;
     stats: string;
+    selected: boolean = false;
+
     constructor(attack: number, defense: number, health: number, cost: number, resources: number, stats: string) {
         this.attack = attack;
         this.defense = defense;

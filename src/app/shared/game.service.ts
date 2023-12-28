@@ -26,7 +26,7 @@ export class GameService {
       let health = 1+Math.floor(Math.random() * 5);
       let resources = Math.floor(Math.random() * 6);
       let cost = Math.floor((attack + defense + health + resources) / 4);
-      let stats = "atk: " + attack + "\ndef: " + defense + "\nhp: " + health + "\nres: " + resources + "\n$: " + cost;
+      let stats = "atk: " + attack + "\n def: " + defense + "\n hp: " + health + "\n res: " + resources + "\n $: " + cost;
       let card = new CardModel(attack, defense, health, cost, resources, stats);
       this.stack.push(card);
     }
