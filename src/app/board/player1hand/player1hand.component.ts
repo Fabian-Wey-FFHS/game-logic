@@ -17,4 +17,9 @@ export class Player1HandComponent implements OnInit {
   ngOnInit() {
     this.player1Hand = this.gameService.getPlayer1Hand();
   }
+
+  selectCard(card: CardModel) {
+    // Toggle the selected state of the card
+    card.selected = !card.selected;
+  }
 }

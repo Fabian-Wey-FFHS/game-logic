@@ -52,4 +52,10 @@ export class GameService {
     return this.player2Hand;
   }
 
+  // Place the selected card on the board at the specified position
+  placeCardOnBoard(card: CardModel, row: number, column: number) {
+    this.cardGrid[row][column] = card;
+    card.selected = false; // Deselect the card after placing it on the board
+  }
+
 }
