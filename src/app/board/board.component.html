@@ -1,6 +1,6 @@
 <!-- board.component.html -->
 <p>board works!</p>
 <app-player1hand></app-player1hand>
-<app-cardgrid></app-cardgrid>
+<app-cardgrid (click)="placeCardOnBoard($event)"></app-cardgrid>
 <app-player2hand></app-player2hand>
 

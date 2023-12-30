@@ -1,9 +1,20 @@
 <!-- cardgrid.component.html -->
 
-<p>cardgrid works!</p>
 <div class="row justify-content-center">
-  <div class="col-md-2">
-    <div id="A1" class="gray-rectangle"></div>
+  <div *ngFor="let row of cardGrid; let i = index" class="col-md-2">
+    <div *ngFor="let card of row; let j = index" class="gray-rectangle" (click)="placeCardOnBoard(i, j)">
+      {{ card ? card.stats : '' }}
+    </div>
+  </div>
+</div>
+
+
+<!--
+<div class="row justify-content-center">
+  <div *ngFor="let row of cardGrid" class="col-md-2">
+    <div *ngFor="let card of row" class="gray-rectangle">
+      {{ card ? card.stats : '' }}
+    </div>
   </div>
   <div class="col-md-2">
     <div id="A2" class="gray-rectangle"></div>
@@ -69,4 +80,5 @@
     <div id="E5" class="gray-rectangle"></div>
   </div>
 </div>
+-->
 

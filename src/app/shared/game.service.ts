@@ -40,6 +40,14 @@ export class GameService {
     this.player1Hand = this.stack.splice(0, 5);
     this.player2Hand = this.stack.splice(0, 5);
     this.events.push("cards dealt");
+
+    // initialize the empty cardgrid with 5 columns and 4 rows
+    for (let i = 0; i < 5; i++) {
+      this.cardGrid[i] = [];
+      for (let j = 0; j < 4; j++) {
+        this.cardGrid[i][j] = null;
+      }
+    }
   }
   getEvents(): string[] {
     return this.events;
@@ -52,10 +60,21 @@ export class GameService {
     return this.player2Hand;
   }
 
-  // Place the selected card on the board at the specified position
-  placeCardOnBoard(card: CardModel, row: number, column: number) {
-    this.cardGrid[row][column] = card;
-    card.selected = false; // Deselect the card after placing it on the board
+
+  // If Player1 has selected a card and clicks on the board, the card is placed on the board
+  // at the specified position. If the position is already occupied, the card is not placed.
+  placeCardOnBoard(row: number, col: number) {
+    let card = this.player1Hand.find(c => c.selected);
+    if (card) {
+      if (!this.cardGrid[row][col]) {
+        this.cardGrid[row][col] = card;
+        this.player1Hand = this.player1Hand.filter(c => c !== card);
+        this.events.push("card placed on board");
+      }
+    }
+  }
+  getcardGrid(): CardModel[][] {
+    return this.cardGrid;
   }
 
 }
