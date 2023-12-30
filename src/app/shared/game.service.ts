@@ -13,6 +13,7 @@ export class GameService {
   events: string[] = [];
   player1Hand: CardModel[] = [];
   player2Hand: CardModel[] = [];
+  currentPlayer: number = 1; // Initially, it's player 1's turn
 
   // 5 column 4 row grid
   cardGrid: CardModel[][] = [];
@@ -86,6 +87,10 @@ export class GameService {
         this.events.push("card placed on board");
       }
     }
+  }
+  // Method to switch to the next player's turn
+  switchTurn() {
+    this.currentPlayer = this.currentPlayer === 1 ? 2 : 1;
   }
 
 
