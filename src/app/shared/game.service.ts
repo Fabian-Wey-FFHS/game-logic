@@ -64,11 +64,11 @@ export class GameService {
   // If Player1 has selected a card and clicks on the board, the card is placed on the board
   // at the specified position. If the position is already occupied, the card is not placed.
   placeCardOnBoard(row: number, col: number) {
-    let card = this.player1Hand.find(c => c.selected);
+    let card = this.getPlayer1Hand().find(c => c.selected);
     if (card) {
       if (!this.cardGrid[row][col]) {
         this.cardGrid[row][col] = card;
-        this.player1Hand = this.player1Hand.filter(c => c !== card);
+        card.selected = false;
         this.events.push("card placed on board");
       }
     }
