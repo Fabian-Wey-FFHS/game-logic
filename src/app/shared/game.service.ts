@@ -93,6 +93,15 @@ export class GameService {
   private drawCardFromStack(): CardModel | undefined {
     return this.stack.pop();
   }
+
+  finishTurn() {
+    // Your existing finish turn logic
+    alert('Finish turn');
+
+    // Switch to the next player's turn
+    this.switchTurn();
+  }
+
   // Method to switch to the next player's turn
   switchTurn() {
     this.currentPlayer = this.currentPlayer === 1 ? 2 : 1;

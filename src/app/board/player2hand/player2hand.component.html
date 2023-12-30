@@ -1,19 +1,19 @@
-<!-- player1hand.component.html -->
+<!-- player2hand.component.html -->
+
+<!-- the cards from player1hand are mapped to "gray rectangle" the stats property is displayed inside the rectangle
+ clicking on the rectangle selects the card. the boarder changes to green-->
+
 <p>player2hand works!</p>
 <div class="row mx-auto">
-  <div class="col-md-2">
-    <div id="P2.1"class="gray-rectangle"></div>
-  </div>
-  <div class="col-md-2">
-    <div id="P2.2" class="gray-rectangle"></div>
-  </div>
-  <div class="col-md-2">
-    <div id="P2.3" class="gray-rectangle"></div>
-  </div>
-  <div class="col-md-2">
-    <div id="P2.4" class="gray-rectangle"></div>
-  </div>
-  <div class="col-md-2">
-    <div id="P2.5" class="gray-rectangle"></div>
+  <div *ngFor="let card of player2Hand; let i = index" class="col-md-2">
+    <div
+      id="P1.{{ i + 1 }}"
+      class="gray-rectangle"
+      (click)="selectCard(card)"
+      [class.selected]="card.selected"
+    >
+      {{ card.stats }} <!-- Display card stats inside the rectangle -->
+    </div>
   </div>
 </div>
+

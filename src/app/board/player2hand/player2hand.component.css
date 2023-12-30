@@ -21,3 +21,9 @@
   padding: 10px;
   box-sizing: border-box;
 }
+
+/* if card is selected a green border is displayed*/
+
+.selected {
+  border: 5px solid green;
+}

@@ -19,7 +19,7 @@ export class InfopanelComponent implements OnInit {
   }
 
   finishTurn() {
-    alert('Finish turn');
+    this.gameService.finishTurn();
   }
 }
 
