@@ -59,34 +59,39 @@ export class GameService {
   // If Player1 has selected a card and clicks on the board, the card is placed on the board
   // at the specified position. If the position is already occupied, the card is not placed.
   placeCardOnBoard(row: number, col: number) {
-    let selectedCard = this.player1Hand.find(c => c.selected);
+    // Check if it's the turn of the current player
+    if (this.currentPlayer === 1) {
+      const selectedCard = this.player1Hand.find((c) => c.selected);
 
-    if (selectedCard) {
-      if (!this.cardGrid[row][col]) {
+      // Check if a card is selected and the target position is empty
+      if (selectedCard && !this.cardGrid[row][col]) {
         // Place the selected card on the board
         this.cardGrid[row][col] = selectedCard;
 
         // Remove the placed card from the player's hand
-        const index = this.player1Hand.indexOf(selectedCard);
-        if (index !== -1) {
-          this.player1Hand.splice(index, 1);
+        const selectedIndex = this.player1Hand.indexOf(selectedCard);
+        if (selectedIndex !== -1) {
+          this.player1Hand.splice(selectedIndex, 1);
         }
 
         // Draw the top card from the stack and add it to the player's hand
-        if (this.stack.length > 0) {
-          let drawnCard = this.stack.pop();
-          if (drawnCard) {
-            this.player1Hand.push(drawnCard);
-          }
+        const drawnCard = this.drawCardFromStack();
+        if (drawnCard) {
+          this.player1Hand.push(drawnCard);
+
+          // Update the selected state of the card
+          selectedCard.selected = false;
+
+          // Update the events
+          this.events.push('card placed on board');
         }
-
-        // Update the selected state of the card
-        selectedCard.selected = false;
-
-        // Update the events
-        this.events.push("card placed on board");
       }
     }
+  }
+
+  // Method to draw the top card from the stack
+  private drawCardFromStack(): CardModel | undefined {
+    return this.stack.pop();
   }
   // Method to switch to the next player's turn
   switchTurn() {
