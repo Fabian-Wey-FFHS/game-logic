@@ -30,12 +30,6 @@ export class GameService {
       let card = new CardModel(attack, defense, health, cost, resources, stats);
       this.stack.push(card);
     }
-    // create a string with the stats of each card
-    // one string for each card in the stack
-    // every value should be preceded by the first 3 letter of the stat
-    for (let i = 0; i < 30; i++) {
-      let card = this.stack[i];
-    }
     // deals 5 cards from the stack to the players. The dealt cards are displayed as
     this.player1Hand = this.stack.splice(0, 5);
     this.player2Hand = this.stack.splice(0, 5);
@@ -64,17 +58,35 @@ export class GameService {
   // If Player1 has selected a card and clicks on the board, the card is placed on the board
   // at the specified position. If the position is already occupied, the card is not placed.
   placeCardOnBoard(row: number, col: number) {
-    let card = this.getPlayer1Hand().find(c => c.selected);
-    if (card) {
+    let selectedCard = this.player1Hand.find(c => c.selected);
+
+    if (selectedCard) {
       if (!this.cardGrid[row][col]) {
-        this.cardGrid[row][col] = card;
-        card.selected = false;
+        // Place the selected card on the board
+        this.cardGrid[row][col] = selectedCard;
+
+        // Remove the placed card from the player's hand
+        const index = this.player1Hand.indexOf(selectedCard);
+        if (index !== -1) {
+          this.player1Hand.splice(index, 1);
+        }
+
+        // Draw the top card from the stack and add it to the player's hand
+        if (this.stack.length > 0) {
+          let drawnCard = this.stack.pop();
+          if (drawnCard) {
+            this.player1Hand.push(drawnCard);
+          }
+        }
+
+        // Update the selected state of the card
+        selectedCard.selected = false;
+
+        // Update the events
         this.events.push("card placed on board");
       }
     }
   }
-  getcardGrid(): CardModel[][] {
-    return this.cardGrid;
-  }
+
 
 }
