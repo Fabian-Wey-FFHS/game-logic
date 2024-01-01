@@ -60,8 +60,8 @@ export class GameService {
     const currentPlayerHand = this.currentPlayer === 1 ? this.player1Hand : this.player2Hand;
     const targetRow = this.currentPlayer === 1 ? 2 : 3;
 
-    // Check if it's the turn of the current player and the target position is in the correct row
-    if (this.currentPlayer === 1 && row === targetRow && col >= 0 && col < this.cardGrid[row].length) {
+    // Check if it's the turn of the current player and the target position is valid
+    if (this.currentPlayer === 1 && row === targetRow && col >= 0 && col < this.cardGrid.length && col < this.cardGrid[row].length) {
       const selectedCard = currentPlayerHand.find((c) => c.selected);
 
       // Check if a card is selected and the target position is empty
@@ -75,16 +75,19 @@ export class GameService {
           currentPlayerHand.splice(selectedIndex, 1);
         }
 
-        // Draw the top card from the stack and add it to the player's hand
-        const drawnCard = this.drawCardFromStack();
-        if (drawnCard) {
-          currentPlayerHand.push(drawnCard);
+        // Check if the turn is still active
+        if (this.currentPlayer === 1) {
+          // Draw the top card from the stack and add it to the player's hand
+          const drawnCard = this.drawCardFromStack();
+          if (drawnCard) {
+            currentPlayerHand.push(drawnCard);
 
-          // Update the selected state of the card
-          selectedCard.selected = false;
+            // Update the selected state of the card
+            selectedCard.selected = false;
 
-          // Update the events
-          this.events.push('card placed on board');
+            // Update the events
+            this.events.push('card placed on board');
+          }
         }
       }
     }
